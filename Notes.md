@@ -12,13 +12,14 @@ minimap2 -ax map-hifi /path/to/file/Gpal_newton_newton.scaffolds.fa m64101_22040
 ```
 * The following python script was used to clip sequences before the forward or after the reverse primer. Reverse strand reads were reverse complemented.
 ```bash 
-./split_before_after_primer_w_rev_compl.py {text file with primers specific to HYP1 or HYP3 and life stage} {life stage} {gene -HYP1 or HYP3}
+./split_before_after_primer_w_rev_compl_v2.py {text file with primers specific to HYP1 or HYP3 and life stage} {life stage} {gene -HYP1 or HYP3}
+
 ```
 '
 ## Notes on getting HVD as a form of a string of numbers from Pacbio or Nanopore reads
  **For getting HVD for Pacbio reads from individual nematodes**
-* Run motif_analysis_test_v3.sh, which will then run the Rscript motif_analsysis_v3.R on each fasta containing reads from individual nematodes. 
+* Run **motif_analysis_test_v3.sh**, which will then run the Rscript **motif_analsysis_v3.R** on each fasta containing reads from individual nematodes. 
 * This will return a new fasta for each where the HVD has now been replaced by numbers. Each number represents a motif and the same number is repeated for the length of the motif to retain the original fasta length. 
-* On these "motif annotated" fasta run motif_clip_test_v7.sh which in turn will run an Rscript motif_clip_v7.R on each file. This clips the fasta to remove the non-HVD portions and also reduce the string of number for each motif down to one. 
+* On these "motif annotated" fasta run **motif_clip_test_v7.sh** which in turn will run an Rscript **motif_clip_v7.R** on each file. This clips the fasta to remove the non-HVD portions and also reduce the string of number for each motif down to one. 
 ***Final file:*** The result should be a file with a string of numbers representing HVD for each read per line. 
 N.B: Run motif_analysis_HYP3_v4.sh <mark> and the clipping file </mark> for HYP3
